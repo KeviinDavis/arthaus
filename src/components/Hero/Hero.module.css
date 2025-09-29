@@ -1,0 +1,48 @@
+/* components/Hero.module.css */
+
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mainText {
+  position: absolute;
+  bottom: -21rem; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.mainText h1 {
+  color: white;
+  font-family: 'Aeonik Pro Bold', sans-serif;
+  font-size: 395px;
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+}
+
+.sideText {
+  position: absolute;
+  top: 51.75%;
+  right: 1.75rem;
+  transform: translateY(-50%);
+  color: white;
+  font-family: 'Aeonik Pro ', sans-serif;
+  text-align: right;
+  white-space: pre-line;
+  font-size: 29px;
+  line-height: 1.2;
+  letter-spacing: -0.01rem;
+  text-transform: uppercase;
+  font-weight: 500;
+
+}
