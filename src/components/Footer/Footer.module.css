@@ -2,62 +2,209 @@
   position: relative;
   height: 100vh;
   clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+  z-index: 10;
 }
 
 .footerSticky {
   position: fixed;
   bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #4E4E5A;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
 }
 
 .footerContent {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 100%;
-  padding: 2rem 3rem;
+  padding: 0;
   box-sizing: border-box;
-  color: white;
+  color: black;
+  overflow-y: auto;
 }
 
+/* BIG “awards.” TEXT */
+.displayAward {
+  font-size: 320px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-transform: lowercase;
+  text-align: center;
+  margin: -4rem 0 0 0;
+  padding: 1rem;
+}
+
+.separator {
+  border: none;
+  border-top: 2px solid black;
+  margin-bottom: 2rem;
+  margin-top: -2rem;
+  width: 100%;
+}
+
+/* NAVIGATION SECTION */
 .sectionTop {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .nav {
   display: flex;
-  gap: 5rem;
+  gap: 4rem;
+  flex-wrap: wrap;
+  padding-left: 6rem; 
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .columnTitle {
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.7);
   margin-bottom: 0.5rem;
   font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.column h3 {
+  font-size: 30px;
+  letter-spacing: -.03em;
+  font-family: 'Aeonik Pro Bold', sans-serif;
+  line-height: 1;
+  /* font-weight: Bold; */
+  color: #000000;
+  margin: 0.2rem 0;
+  cursor: default;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.column p {
+  font-size: 26px;
+  font-family: 'Aeonik Pro', sans-serif;
+  letter-spacing: -.03em;
+  line-height: 1;
+  /* font-weight: Bold; */
+  color: #000000;
+  margin: 0.2rem 0;
+  cursor: default;
+}
+
+/* SUBSCRIBE CTA */
+.subscribeWrapper {
+  display: flex;
+  justify-content: flex-start;
+  /* padding-bottom: 1.5rem; */
+
+}
+
+.subscribe {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 9999px;
+  overflow: hidden;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: 6.25rem;
+}
+
+.subscribeInput {
+  font-family: 'Aeonik Pro', sans-serif;
+  font-weight: 800;
+  opacity: 1;
+  color: black;
+  width: 35rem;
+  padding: 1.1rem 1.25rem;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subscribeInput::placeholder {
+  color: black;
+  opacity: 1;
+  font-family: 'Aeonik Pro', sans-serif;
+}
+
+.subscribeButton {
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: .5rem;
+  background-color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* BOTTOM SECTION */
+.separator1 {
+  border: none;
+  border-top: 1px solid black;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .sectionBottom {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding: 0 12rem .01rem 0;
 }
 
-.largeText {
-  font-size: 14vw;
-  line-height: 0.8;
+/* .largeText {
+   font-size: 300px;
+   text-transform: uppercase;
+  font-weight: bold;
+  line-height: 1;
+  text-transform: lowercase;
   margin: 0;
+  padding-bottom: 1.5rem;
+} */
+
+
+.copyCentered {
+  font-family: 'Aeonik Pro';
+  font-weight: 0;
+  color: black;
+  font-size: 30px;
+  /* opacity: 0.6; */
+  text-align: right;
+  margin-bottom: .5rem;
+  margin-right: 3.5rem;
 }
 
-.copy {
-  font-size: 14px;
-  opacity: 0.7;
+.sliderWrapper {
+  width: 100%;
+  /* overflow: hidden; */
+  white-space: nowrap;
+}
+
+.slider {
+  display: inline-block;
+  white-space: nowrap;
+  position: relative;
+}
+
+.slider p {
+  display: inline-block;
+  font-size: 250px;
+  font-weight: 900;
+  font-family: 'Aeonik Pro Bold', sans-serif;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  margin: -3.5rem 0;
+  color: black;
 }
