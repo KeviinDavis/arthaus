@@ -1,0 +1,84 @@
+.aboutWrapper {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start; /* align top of button and text */
+  justify-content: space-between;
+  padding: 6rem 0;
+  /* gap: 2rem; */
+}
+
+.aboutButton button {
+  font-family: 'Aeonik Pro Medium', sans-serif;
+  font-size: 40px;
+  font-weight: 100;
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  padding: 0.5rem 1.5rem;
+  border-radius: 100px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  margin-left: 5rem;
+
+}
+
+.aboutButton {
+  text-decoration: none;
+}
+
+.aboutButton button:hover {
+  background-color: black;
+  color: white;
+}
+
+.buttonCircle {
+  width: 35px;
+  height: 35px;
+  background-color: black;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  margin-left: 0.75rem;
+}
+
+.aboutButton button:hover .buttonCircle {
+  background-color: white;
+}
+
+.aboutText {
+  font-family: 'Aeonik Pro Medium', sans-serif;
+  font-size: 43px;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  line-height: 1.2;
+  max-width: 73vw;
+  text-align: right;
+  margin-top: 5rem; /* optional tweak for alignment */
+  margin-right: 4rem;
+}
+
+@media (max-width: 768px) {
+  .aboutWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    padding: 3rem 2rem;
+  }
+
+  .aboutText {
+    max-width: 100%;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .aboutButton {
+    margin-bottom: 1.5rem;
+  }
+}
