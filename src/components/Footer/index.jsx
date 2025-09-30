@@ -86,7 +86,7 @@ export default function Footer() {
             </div>
           </div>
 
-        <p className={styles.copyCentered}>© 2025 RIGAS FURNITURE • by PROWEB</p>
+        <p className={styles.copyCentered}>© 2025 ARTHAUS FURNITURE • by PROWEB</p>
           {/* ✅ BOTTOM SECTION */}
           <hr className={styles.separator1} />
 

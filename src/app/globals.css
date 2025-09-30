@@ -14,6 +14,23 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Aeonik Pro Thin';
+  src: url('/fonts/AeonikProThin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik Pro Medium';
+  src: url('/fonts/AeonikProMedium.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
