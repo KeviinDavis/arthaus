@@ -32,7 +32,7 @@
   line-height: 1;
   text-transform: lowercase;
   text-align: center;
-  margin: -4rem 0 0 0;
+  margin: -7rem 0 0 0;
   padding: 1rem;
 }
 
@@ -200,11 +200,11 @@
 
 .slider p {
   display: inline-block;
-  font-size: 250px;
+  font-size: 215px;
   font-weight: 900;
   font-family: 'Aeonik Pro Bold', sans-serif;
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  margin: -3.5rem 0;
+  margin: -3.75rem;
   color: black;
 }

@@ -4,7 +4,7 @@
   display: flex;
   align-items: flex-start; /* align top of button and text */
   justify-content: space-between;
-  padding: 6rem 0;
+  padding: 4rem 0;
   /* gap: 2rem; */
 }
 
