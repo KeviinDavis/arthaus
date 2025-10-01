@@ -19,14 +19,14 @@ export default function AboutHero() {
       </div>
 
       {/* Side Middle Text */}
-      {/* <div className={styles.sideText}>
+      <div className={styles.sideText}>
         <p>
           50 YEARS OF<br />
           QUALITY<br />
           EXPERIENCE AND<br />
           PHILOSOPHY
         </p>
-      </div> */}
+      </div>
     </div>
   );
 }
