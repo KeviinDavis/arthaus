@@ -20,8 +20,10 @@
 }
 
 .logo img {
-  height: 200px; /* oversized logo */
+  height: 230px; /* oversized logo */
   width: auto;
+  margin-left: 1.25rem;
+  margin-top: -2rem;
 }
 
 /* Right-side container */
@@ -30,7 +32,7 @@
   align-items: center;
   gap: 1rem;
   margin-right: 6rem;
-  margin-top: 6rem; /* adjust vertical placement */
+  margin-top: 4rem; /* adjust vertical placement */
 }
 
 /* MENU text */

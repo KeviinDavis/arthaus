@@ -1,0 +1,209 @@
+.overlayWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  color: white;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+/* TOP-RIGHT: Close + Circle + Search */
+.menuTopRight {
+  position: absolute;
+  top: 4rem;
+  right: 6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.menuBtn {
+  font-family: 'Aeonik Pro', sans-serif;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  line-height: 1;
+  padding: 0;
+}
+
+.circle {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+}
+
+.searchBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* MAIN GRID */
+.menuGrid {
+  margin-top: 5.5rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+}
+
+.leftColumn,
+.centerColumn,
+.rightColumn {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.leftColumn {
+  align-items: flex-start;
+}
+
+.centerColumn {
+  align-items: center;
+}
+
+.rightColumn {
+  align-items: flex-start;
+  padding-right: 5rem;
+}
+
+/* NAV LIST */
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.navList li {
+  font-size: 60px;
+  font-weight: 900;
+  font-family: 'Aeonik Pro Bold';
+  line-height: 1.35em;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: white;
+}
+
+.navList li a {
+  text-decoration: none;
+  color: white;
+}
+
+/* NEW: Shared heading style for contact + social */
+.blockHeading {
+  font-family: 'Aeonik Pro Bold', sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+/* CONTACT INFO */
+.contactBlock {
+  font-family: 'Aeonik Pro', sans-serif;
+  text-align: left;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.contactBlock p {
+  margin: 0.3rem 0;
+}
+
+/* SOCIAL LINKS */
+.socialBlock {
+  font-family: 'Aeonik Pro', sans-serif;
+  text-align: left;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.socialBlock p {
+  margin: 0.3rem 0;
+  text-transform: uppercase;
+}
+
+/* FOOTER META (©2025 / SINCE 1975) */
+.overlayFooterMeta {
+  position: absolute;
+  bottom: 10.5rem;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Aeonik Pro Thin';
+  font-size: 2.5rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+}
+
+/* BIG WORDMARK AT BOTTOM */
+.overlayFooterText {
+  position: absolute;
+  bottom: -12rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 176px;
+  font-weight: 900;
+  font-family: 'Aeonik Pro Bold';
+  letter-spacing: -0.09em;
+  text-transform: uppercase;
+  color: white;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Add vertical dividers */
+.menuGrid {
+  position: relative; /* Needed for absolute lines */
+  margin-top: 5.5rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+}
+
+/* Vertical lines */
+.menuGrid::before,
+.menuGrid::after {
+  content: '';
+  position: absolute;
+  /* top: 6rem; */
+  height: 60%;
+  width: 5px;
+  background-color: white;
+  z-index: 1;
+}
+
+.menuGrid::before {
+  left: 33.33%;
+}
+
+.menuGrid::after {
+  left: 66.66%;
+}
