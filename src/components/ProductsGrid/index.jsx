@@ -8,10 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ProductsGrid({ items }) {
   const gridRef = useRef(null);
+  const imageRefs = useRef([]);
 
   useEffect(() => {
     const overlays = gridRef.current.querySelectorAll(`.${styles.imageOverlay}`);
 
+    // Scroll Reveal Overlay Animation
     overlays.forEach((overlay) => {
       gsap.fromTo(
         overlay,
@@ -28,13 +30,38 @@ export default function ProductsGrid({ items }) {
         }
       );
     });
+
+    // Parallax Scroll Animation (Desktop only)
+    if (window.innerWidth < 768) return;
+
+        imageRefs.current.forEach((el, index) => {
+const speed = [3, 15, 11][index % 3];
+
+gsap.to(el, {
+  y: -15 * speed, // pixel-based control
+  ease: 'none',
+  scrollTrigger: {
+    trigger: el,
+    start: 'top bottom',
+    scrub: true,
+  },
+});
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
-  return (
-    <section className={styles.productsWrapper}>
-      <div ref={gridRef} className={styles.grid}>
-        {items.map((item, index) => (
-          <div className={styles.card} key={index}>
+return (
+  <section className={styles.productsWrapper}>
+    <div ref={gridRef} className={styles.grid}>
+      {items.map((item, index) => (
+        <div className={styles.card} key={index}>
+          <div
+            className={styles.parallaxGroup}
+            ref={(el) => (imageRefs.current[index] = el)}
+          >
             <div className={styles.imageContainer}>
               <div className={styles.revealWrapper}>
                 <div className={styles.imageOverlay}></div>
@@ -47,8 +74,9 @@ export default function ProductsGrid({ items }) {
             </div>
             <h4 className={styles.title}>{item.title}</h4>
           </div>
-        ))}
-      </div>
-    </section>
-  );
+        </div>
+      ))}
+    </div>
+  </section>
+);
 }
