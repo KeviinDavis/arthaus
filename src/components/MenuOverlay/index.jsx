@@ -90,7 +90,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
             </li>
 
             <li><a href="/About">About</a></li>
-            <li><a href="/Contact">Contact</a></li>
+            <li><a href="/InterestForm">Contact</a></li>
           </ul>
         </div>
 
