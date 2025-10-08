@@ -1,7 +1,27 @@
 'use client';
+import { useState, useEffect } from 'react';
 import styles from './InterestForm.module.css';
+import HomeData from '/src/Data/HomeData';
 
 export default function InterestForm() {
+  // Wishlist state
+  const [wishlist, setWishlist] = useState([]);
+
+  // Load wishlist from localStorage when component mounts
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem('wishlist');
+    if (savedWishlist) {
+      setWishlist(JSON.parse(savedWishlist));
+    }
+  }, []);
+
+  // Remove item from wishlist and update localStorage
+  const removeItem = (id) => {
+    const updatedList = wishlist.filter((item) => item.id !== id);
+    setWishlist(updatedList);
+    localStorage.setItem('wishlist', JSON.stringify(updatedList));
+  };
+
   return (
     <div className={styles.formWrapper}>
       {/* Header */}
@@ -11,40 +31,34 @@ export default function InterestForm() {
 
       {/* Wishlist Items */}
       <div className={styles.itemSection}>
-        {/* Item 1 */}
-        <div className={styles.itemRow}>
-          <div className={styles.itemInfo}>
-            <img
-              src="/images/Products/Home/shelfUk.webp"
-              alt="Wishlist item"
-              className={styles.itemImage}
-            />
-            <div className={styles.itemText}>
-              <h4>GRIF SHOWCASE NATURAL 53×40×197</h4>
-              <p>Code: 24-0703</p>
+        {wishlist.length > 0 ? (
+          wishlist.map((item) => (
+            <div key={item.id} className={styles.itemRow}>
+              <div className={styles.itemInfo}>
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className={styles.itemImage}
+                />
+                <div className={styles.itemText}>
+                  <h4>{item.title}</h4>
+                  <p>Code: {item.code}</p>
+                </div>
+              </div>
+              <button
+                onClick={() => removeItem(item.id)}
+                className={styles.removeBtn}
+              >
+                ×
+              </button>
             </div>
-          </div>
-          <button className={styles.removeBtn}>×</button>
-        </div>
-
-        {/* Item 2 */}
-        <div className={styles.itemRow}>
-          <div className={styles.itemInfo}>
-            <img
-              src="/images/Products/Home/shelflargebrown.webp"
-              alt="Wishlist item"
-              className={styles.itemImage}
-            />
-            <div className={styles.itemText}>
-              <h4>ARIS MODERN CHAIR 45×45×80</h4>
-              <p>Code: 18-0245</p>
-            </div>
-          </div>
-          <button className={styles.removeBtn}>×</button>
-        </div>
+          ))
+        ) : (
+          <p className={styles.emptyText}>Your wishlist is empty.</p>
+        )}
       </div>
 
-      {/* Form */}
+      {/* Contact Form */}
       <div className={styles.contactSection}>
         <h3>Contact Information</h3>
         <form className={styles.contactForm}>

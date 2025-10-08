@@ -1,5 +1,6 @@
 .formWrapper {
-  height: 100vh;
+  min-height: 100vh; /* allow flexible height if content grows */
+  height: auto;
   width: 100%;
   background-color: #fff;
   color: #000;
@@ -19,11 +20,21 @@
 }
 
 /* Wishlist Items */
+.itemSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* consistent vertical spacing */
+  margin-bottom: 3rem; /* space before contact form */
+  overflow: visible; /* allow natural expansion */
+  width: 100%;
+}
+
 .itemRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  flex-shrink: 0;
+  position: relative; /* keep in normal document flow */
 }
 
 .itemInfo {
@@ -42,7 +53,7 @@
   font-family: 'Aeonik Pro Bold';
   font-size: 16px;
   font-weight: 800;
-  margin: 0 0 0.2rem 0; 
+  margin: 0 0 0.2rem 0;
   letter-spacing: -0.01em;
 }
 
@@ -64,9 +75,27 @@
   font-size: 1.2rem;
   cursor: pointer;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.removeBtn:hover {
+  background-color: #a00;
+}
+
+.emptyText {
+  font-size: 16px;
+  opacity: 0.6;
+  margin-top: 1rem;
 }
 
 /* Contact Form */
+.contactSection {
+  width: 100%;
+}
+
 .contactSection h3 {
   font-family: 'Aeonik Pro Bold';
   font-size: 20px;
@@ -93,7 +122,6 @@
 
 .contactForm input,
 .contactForm textarea {
-  /* width: 100%; */
   border: 2px solid #000;
   padding: 0.8rem;
   font-size: 16px;

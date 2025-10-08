@@ -1,5 +1,6 @@
 const HomeData = [
   {
+    id: 'home-1',
     src: '/images/Products/Home/shelflargebrown.webp',
     alt: 'Shelf Large Brown',
     title: 'ROMULUS BOOKCASE RECYCLED TEAK WOOD WITH 2 DRAWERS',
@@ -10,6 +11,7 @@ const HomeData = [
     code: '24-1001',
   },
   {
+    id: 'home-2',
     src: '/images/Products/Home/shelftanwhite.webp',
     alt: 'Shelf Tan White',
     title:
@@ -21,6 +23,7 @@ const HomeData = [
     code: '24-1002',
   },
   {
+    id: 'home-3',
     src: '/images/Products/Home/shelfuk.webp',
     alt: 'Shelf UK',
     title: 'LONDON CALLING HIGH BOOKCASE RED',
@@ -31,6 +34,7 @@ const HomeData = [
     code: '24-1003',
   },
   {
+    id: 'home-4',
     src: '/images/Products/Home/shelfbike.webp',
     alt: 'Shelf Bike',
     title: 'MOTOR HIGH BOOKCASE NATURAL',
@@ -41,6 +45,7 @@ const HomeData = [
     code: '24-1004',
   },
   {
+    id: 'home-5',
     src: '/images/Products/Home/shelfbrownblack.webp',
     alt: 'Shelf Brown Black',
     title: 'BRICK-URBAN BOOKCASE WALNUT BLACK',
@@ -51,6 +56,7 @@ const HomeData = [
     code: '24-1005',
   },
   {
+    id: 'home-6',
     src: '/images/Products/Home/shelftanblack.webp',
     alt: 'Shelf Tan Black',
     title: 'STAPLES BOOKCASE 4 SHELVES WHITE WASHED BLACK',
@@ -61,6 +67,7 @@ const HomeData = [
     code: '24-1006',
   },
   {
+    id: 'home-7',
     src: '/images/Products/Home/shelfblackcurved.webp',
     alt: 'Shelf Black Curved',
     title: 'NESSOS BOOKCASE BLACK',
