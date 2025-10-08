@@ -4,15 +4,32 @@ import styles from './InterestForm.module.css';
 import HomeData from '/src/Data/HomeData';
 
 export default function InterestForm() {
-  // Wishlist state
   const [wishlist, setWishlist] = useState([]);
 
-  // Load wishlist from localStorage when component mounts
-  useEffect(() => {
+  // Function to load wishlist from localStorage
+  const loadWishlist = () => {
     const savedWishlist = localStorage.getItem('wishlist');
     if (savedWishlist) {
       setWishlist(JSON.parse(savedWishlist));
+    } else {
+      setWishlist([]);
     }
+  };
+
+  // Load wishlist on mount + listen for updates
+  useEffect(() => {
+    loadWishlist();
+
+    // ✅ Listen for localStorage + custom wishlistUpdated events
+    const handleStorageChange = () => loadWishlist();
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('wishlistUpdated', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('wishlistUpdated', handleStorageChange);
+    };
   }, []);
 
   // Remove item from wishlist and update localStorage
@@ -20,6 +37,9 @@ export default function InterestForm() {
     const updatedList = wishlist.filter((item) => item.id !== id);
     setWishlist(updatedList);
     localStorage.setItem('wishlist', JSON.stringify(updatedList));
+
+    // ✅ Notify all components instantly (same tab + Next.js safe)
+    window.dispatchEvent(new Event('wishlistUpdated'));
   };
 
   return (

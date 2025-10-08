@@ -28,24 +28,25 @@ export default function ProductsModal({ isOpen, onClose, product }) {
   }, [isOpen]);
 
   // ✅ Reset button state when modal opens or product changes
-// ✅ Reset button state when modal opens or product changes
-useEffect(() => {
-  if (!isOpen || !product || !product.id) {
-    setAdded(false);
-    return;
-  }
+  useEffect(() => {
+    if (!isOpen || !product || !product.id) {
+      setAdded(false);
+      return;
+    }
 
-  try {
-    const stored = localStorage.getItem('wishlist');
-    const wishlist = stored ? JSON.parse(stored) : [];
-    const exists = wishlist.some((item) => item.id.trim() === product.id.trim());
-    setAdded(exists);
-  } catch {
-    setAdded(false);
-  }
-}, [isOpen, product]);
+    try {
+      const stored = localStorage.getItem('wishlist');
+      const wishlist = stored ? JSON.parse(stored) : [];
+      const exists = wishlist.some(
+        (item) => item.id.trim() === product.id.trim()
+      );
+      setAdded(exists);
+    } catch {
+      setAdded(false);
+    }
+  }, [isOpen, product]);
 
-  // Add to wishlist handler
+  // ✅ Add to wishlist handler (live-sync enabled)
   const handleAddToWishlist = () => {
     try {
       const stored = localStorage.getItem('wishlist');
@@ -67,6 +68,11 @@ useEffect(() => {
       const updated = [...wishlist, newItem];
       localStorage.setItem('wishlist', JSON.stringify(updated));
       setAdded(true);
+
+      // ✅ Notify all components (wishlist button + form) instantly
+      setTimeout(() => {
+        window.dispatchEvent(new Event('wishlistUpdated'));
+      }, 50);
     } catch (err) {
       console.error('Error adding to wishlist:', err);
     }
