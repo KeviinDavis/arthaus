@@ -33,9 +33,11 @@ export default function Collections() {
   }, []);
 
   const imageData = [
+    { src: '/images/Products/Home/HeroHome.png', label: 'Home' },
     { src: '/images/outsidearea.png', label: 'OUTSIDE' },
     { src: '/images/kitchenarea.png', label: 'KITCHEN' },
-    { src: '/images/livingarea.png', label: 'LIVING' },
+    { src: '/images/livingarea.png', label: 'LIVING' }, // Take Down ???
+
   ];
 
     return (

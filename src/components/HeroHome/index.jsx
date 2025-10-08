@@ -1,18 +1,18 @@
-import styles from './HeroShelves.module.css';
+import styles from './HeroHome.module.css';
 
-export default function HeroShelves({ mainText, sideText }) {
+export default function HeroHome({ mainText, sideText }) {
   return (
     <div className={styles.heroContainer}>
       {/* Background Image */}
       <img
-        src="/images/Products/Shelves/HeroShelves.png"
+        src="/images/Products/Home/HeroHome.png"
         alt="HeroShelves"
         className={styles.heroImage}
       />
 
       {/* Bottom Large Text */}
       <div className={styles.mainText}>
-        <h1>Shelves</h1>
+        <h1>Home</h1>
       </div>
 
       {/* Side Middle Text */}

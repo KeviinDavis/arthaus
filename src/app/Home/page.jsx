@@ -1,6 +1,6 @@
-import HeroShelves from '../../components/HeroShelves';
+import HeroHome from '../../components/HeroHome';
 import ProductsGrid from '../../components/ProductsGrid';
-import shelvesData from '../../data/shelvesData';
+import HomeData from '../../Data/HomeData';
 import About from '../../components/About/index.jsx'
 
 
@@ -8,9 +8,9 @@ import About from '../../components/About/index.jsx'
 export default function Products() {
   return (
     <main>
-      <HeroShelves />
+      <HeroHome />
       {/* <About /> */}
-      <ProductsGrid  items={shelvesData}/>
+      <ProductsGrid  items={HomeData}/>
     </main>
   )
 }

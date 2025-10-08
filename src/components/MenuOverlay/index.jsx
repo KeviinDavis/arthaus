@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 
 export default function MenuOverlay({ isOpen, onClose }) {
   const overlayRef = useRef(null);
-  const [animation, setAnimation] = useState(null); // Save timeline for reverse
+  const [animation, setAnimation] = useState(null);
 
   // Play enter animation on mount
   useEffect(() => {
@@ -19,20 +19,20 @@ export default function MenuOverlay({ isOpen, onClose }) {
         ease: 'power4.out',
         paused: true,
         onReverseComplete: () => {
-          onClose(); // Only close after reverse animation
+          onClose();
         },
       }
     );
-    tl.play(); // Play forward
-    setAnimation(tl); // Store timeline
+    tl.play();
+    setAnimation(tl);
   }, [onClose]);
 
   // Handle CLOSE click
   const handleClose = () => {
     if (animation) {
-      animation.reverse(); // Play reverse animation
+      animation.reverse();
     } else {
-      onClose(); // Fallback just in case
+      onClose();
     }
   };
 
@@ -77,11 +77,20 @@ export default function MenuOverlay({ isOpen, onClose }) {
         {/* Center Column: Navigation */}
         <div className={styles.centerColumn}>
           <ul className={styles.navList}>
-            {['Projects', 'About', 'Philosophy', 'Timeline', 'Contact'].map((item) => (
-              <li key={item}>
-                <a href={`/${item.toLowerCase()}`}>{item}</a>
-              </li>
-            ))}
+            <li><a href="/">ART HAUS</a></li>
+
+            <li className={styles.productsItem}>
+              <a href="/products">Products</a>
+              <ul className={styles.subNav}>
+                {/* <li><a href="/Home">Home</a></li> */}
+                <li><a href="/products/Kitchen">Kitchen</a></li>
+                <li><a href="/products/Outdoors">Outdoors</a></li>
+                <li><a href="/Home">Home</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/About">About</a></li>
+            <li><a href="/Contact">Contact</a></li>
           </ul>
         </div>
 
