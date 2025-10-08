@@ -121,3 +121,10 @@
   background: #000;
   color: #fff;
 }
+
+.addedButton {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+  cursor: default;
+}
