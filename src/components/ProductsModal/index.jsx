@@ -4,7 +4,25 @@ import styles from './ProductsModal.module.css';
 
 export default function ProductsModal({ isOpen, onClose, product }) {
   const modalRef = useRef(null);
-  const [added, setAdded] = useState(false); // track button state
+  const [added, setAdded] = useState(false); // true if product is in wishlist
+
+  /* ---------- UTILITIES ---------- */
+  const readWishlist = () => {
+    try {
+      const stored = localStorage.getItem('wishlist');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const saveWishlist = (list) => {
+    localStorage.setItem('wishlist', JSON.stringify(list));
+    // notify all listeners (InterestForm + Floating Button)
+    window.dispatchEvent(new Event('wishlistUpdated'));
+  };
+
+  /* ---------- EFFECTS ---------- */
 
   // Close on ESC
   useEffect(() => {
@@ -13,7 +31,7 @@ export default function ProductsModal({ isOpen, onClose, product }) {
     return () => document.removeEventListener('keydown', handleEsc);
   }, [isOpen, onClose]);
 
-  // Close on click outside
+  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) onClose();
@@ -22,41 +40,31 @@ export default function ProductsModal({ isOpen, onClose, product }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen, onClose]);
 
-  // Lock scroll
+  // Lock body scroll
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
   }, [isOpen]);
 
-  // ✅ Reset button state when modal opens or product changes
+  // Determine initial added state whenever modal opens or product changes
   useEffect(() => {
-    if (!isOpen || !product || !product.id) {
-      setAdded(false);
-      return;
-    }
-
-    try {
-      const stored = localStorage.getItem('wishlist');
-      const wishlist = stored ? JSON.parse(stored) : [];
-      const exists = wishlist.some(
-        (item) => item.id.trim() === product.id.trim()
-      );
-      setAdded(exists);
-    } catch {
-      setAdded(false);
-    }
+    if (!isOpen || !product?.id) return;
+    const wishlist = readWishlist();
+    setAdded(wishlist.some((item) => item.id === product.id));
   }, [isOpen, product]);
 
-  // ✅ Add to wishlist handler (live-sync enabled)
-  const handleAddToWishlist = () => {
-    try {
-      const stored = localStorage.getItem('wishlist');
-      const wishlist = stored ? JSON.parse(stored) : [];
+  /* ---------- TOGGLE HANDLER ---------- */
+  const handleToggleWishlist = () => {
+    if (!product?.id) return;
+    const wishlist = readWishlist();
+    const exists = wishlist.some((item) => item.id === product.id);
 
-      // Check if already exists
-      const exists = wishlist.some((item) => item.id === product.id);
-      if (exists) return;
-
-      // Create new entry
+    if (exists) {
+      // Remove
+      const updated = wishlist.filter((item) => item.id !== product.id);
+      saveWishlist(updated);
+      setAdded(false);
+    } else {
+      // Add
       const newItem = {
         id: product.id,
         src: product.src,
@@ -64,20 +72,13 @@ export default function ProductsModal({ isOpen, onClose, product }) {
         title: product.title,
         code: product.code,
       };
-
       const updated = [...wishlist, newItem];
-      localStorage.setItem('wishlist', JSON.stringify(updated));
+      saveWishlist(updated);
       setAdded(true);
-
-      // ✅ Notify all components (wishlist button + form) instantly
-      setTimeout(() => {
-        window.dispatchEvent(new Event('wishlistUpdated'));
-      }, 50);
-    } catch (err) {
-      console.error('Error adding to wishlist:', err);
     }
   };
 
+  /* ---------- RENDER ---------- */
   if (!isOpen || !product) return null;
 
   return (
@@ -92,6 +93,7 @@ export default function ProductsModal({ isOpen, onClose, product }) {
           ×
         </button>
 
+        {/* Left: image */}
         <div className={styles.imageSection}>
           <img
             src={product.src}
@@ -100,6 +102,7 @@ export default function ProductsModal({ isOpen, onClose, product }) {
           />
         </div>
 
+        {/* Right: info */}
         <div className={styles.infoSection}>
           <h2 className={styles.productTitle}>{product.title}</h2>
           <p className={styles.productDescription}>{product.description}</p>
@@ -108,14 +111,14 @@ export default function ProductsModal({ isOpen, onClose, product }) {
           </p>
           <p className={styles.productCode}>CODE: {product.code}</p>
 
+          {/* Toggle button */}
           <button
             className={`${styles.wishlistButton} ${
               added ? styles.addedButton : ''
             }`}
-            onClick={handleAddToWishlist}
-            disabled={added}
+            onClick={handleToggleWishlist}
           >
-            {added ? 'Added to wishlist' : 'Add to wishlist'}
+            {added ? 'Remove from wishlist' : 'Add to wishlist'}
           </button>
         </div>
       </div>

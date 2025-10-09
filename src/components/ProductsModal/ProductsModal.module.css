@@ -128,3 +128,14 @@
   border-color: #000;
   cursor: default;
 }
+
+.addedButton {
+  background: #d00;
+  color: #fff;
+  border-color: #d00;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.addedButton:hover {
+  background: #a00;
+}
